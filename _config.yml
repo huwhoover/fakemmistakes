@@ -1,52 +1,36 @@
-# Site wide configuration
-
-title:            hugo bernstein's blog
-locale:           en_US
+# Title, decription, tagline and URL for your site
+# Can be used in your theme by calling 'site.title' and so on
+title: fakemmistakes
+locale: en_US
+description: a front end
+baseurl:
 url:
 
+permalink: /:categories/:title/
+# Used so Jekyll outputs the site correctly so Gulp can do what it wants
+source: .tmp/src
+destination: .tmp/dist
+include: [".htaccess"]
+exclude: ["assets", "lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gulpfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
 
-# Jekyll configuration
-
-permalink:   /:categories/:title/
-markdown:    kramdown
-highlighter: rouge
-sass:
-  sass_dir: _sass
-  style: compressed
-gems:
-  - jekyll-sitemap
-  - jekyll-gist
-
-kramdown:
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  enable_coderay: false
-
-
-# Octopress
-
-# Default extensions
-post_ext: md
-page_ext: md
-
-# Found in _templates/
-post_layout: post
-page_layout: page
-
-# Format titles with titlecase?
-titlecase: true
-
-
+# Same as the title etc for your site but can instead be
+# called by using 'site.author.name' and so on
+# NOTE: Don't use @ in front of your Twitter username
+author:
+  name: hugoSirius
+  email: huwung@gmail.com
+  uri:
+  bio:
+  twitter:
+  github:
 # Site owner
 owner:
-  name: Hugo Bernstein
+  name: hugoSirius
   avatar: bio-photo.jpg
   bio: "aka., 王虎, A father, Biology investigator, and Data Scientist."
   email: huwung@gmail.com
   disqus-shortname:
-  twitter: huWANGplus #username
+  twitter: huWANGplus
   facebook: #username
   google:
     plus: #username
@@ -55,7 +39,7 @@ owner:
     ad-client:
     ad-slot:
   bing-verify:
-  github: huwung #username
+  github: huwhoover
   stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
   linkedin: #username
   xing: #username
@@ -72,5 +56,46 @@ owner:
   flickr: #username
   codepen: #username
 
-include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
+# _config.build.yml overwrites these options when you run `gulp build`
+# Enables future posts (posts with dates in the future) and drafts
+future: true
+show_drafts: true
+# Disables the more accurate related posts for faster generating of the site
+lsi: false
+# Only make the last 10 posts so generating isn't slow
+limit_posts: 10
+
+# Permalink structure and pagination options
+permalink: pretty
+paginate: 10
+paginate_path: 'page:num'
+excerpt_separator: ''
+
+# Markdown library and options
+markdown: redcarpet
+redcarpet:
+  extensions: ['no_intra_emphasis', 'tables', 'fenced_code_blocks', 'autolink', 'smart',
+              'strikethrough', 'superscript', 'underline', 'highlight', 'footnotes']
+highlighter: rouge
+
+# Octopress
+
+# Default extensions
+post_ext: md
+page_ext: md
+
+# Found in _templates/
+post_layout: post
+page_layout: page
+
+# Format titles with titlecase?
+titlecase: true
+
+# Extending Jekyll
+gems:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-redirect-from

@@ -1,6 +1,14 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 3.0"
-gem "jekyll-sitemap"
-gem "jekyll-gist"
-gem "octopress"
+gem 'jekyll'
+gem 'redcarpet'
+gem 'octopress'
+
+# jekyll plugins
+gem 'jekyll-feed'
+gem 'jekyll-gist'
+gem 'jekyll-paginate'
+gem 'jekyll-sitemap'
+gem 'jekyll-seo-tag'
+gem 'jekyll-redirect-from'
+gem 'jekyll-compose', group: [:jekyll_plugins]
